@@ -16,6 +16,21 @@ with open('data.txt', 'r', encoding='utf-8') as file:
         file.readline()
         cook_book[cook] = eat
 
-pprint(cook_book, sort_dicts=False)
 
+def get_shop_list_by_dishes(dishes, person_count):
+    ingridient_list = {}
+    for dish_name in dishes:
+        if dish_name in cook_book:
+            for ingredients in cook_book[dish_name]:
+                meas_list = {}
+                if ingredients['ingredient_name'] not in ingridient_list:
+                    meas_list['measure'] = ingredients['measure']
+                    meas_list['quantity'] = int(ingredients['quantity']) * person_count
+                    ingridient_list[ingredients['ingredient_name']] = meas_list
+                else:
+                    ingridient_list[ingredients['ingredient_name']]['quantity'] = ingridient_list[ingredients['ingredient_name']]['quantity'] + \
+                                                                     ingredients['quantity'] * person_count
 
+    return ingridient_list
+
+pprint(get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'], 2))
