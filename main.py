@@ -1,6 +1,6 @@
-import pprint
+from pprint import pprint
 
-with open ('recipe' 'wr') as file:
+with open('data.txt', 'r', encoding='utf-8') as file:
     cook_book = {}
     for line in file:
         cook = line.strip()
@@ -16,6 +16,6 @@ with open ('recipe' 'wr') as file:
         file.readline()
         cook_book[cook] = eat
 
-        pprint(cook_book)
+pprint(cook_book, sort_dicts=False)
 
 
