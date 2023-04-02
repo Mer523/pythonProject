@@ -1,6 +1,6 @@
 import pprint
 
-with open ('recipes' 'wr') as file:
+with open ('recipe' 'wr') as file:
     cook_book = {}
     for line in file:
         cook = line.strip()
